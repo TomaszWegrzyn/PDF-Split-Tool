@@ -4,7 +4,7 @@ import { RootState } from '../../store';
 
 const fileSlice = createSlice({
   name: 'file',
-  initialState: null,
+  initialState: '',
   reducers: {
     change: (_state, action) => {
       return action.payload;
