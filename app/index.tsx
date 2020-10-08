@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import { render } from 'react-dom';
 import { AppContainer as ReactHotAppContainer } from 'react-hot-loader';
+import { ipcRenderer } from 'electron';
 import { history, configuredStore } from './store';
 import './app.global.css';
-import { ipcRenderer } from 'electron';
-import { change } from './features/file/fileSlice';
 
+import { changeFile } from './features/file/fileSlice';
 
 const store = configuredStore();
 
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 ipcRenderer.on('open-file', (_event, filename) => {
-  console.log("xDDDD");
-  store.dispatch(change(filename));
+  store.dispatch(changeFile(filename));
 });
+
+export type AppDispatch = typeof store.dispatch;
